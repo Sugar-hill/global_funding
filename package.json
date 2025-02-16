@@ -1,5 +1,5 @@
 {
-  "name": "world_assets",
+  "name": "funding",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,9 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@telegram-apps/sdk": "^3.4.0",
+    "@ton/core": "^0.60.0",
+    "@tonconnect/sdk": "^3.0.6",
+    "@tonconnect/ui-react": "^2.0.11",
+    "@twa-dev/sdk": "^8.0.2",
+    "next": "15.1.7",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.1.7"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "postcss": "^8",
