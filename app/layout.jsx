@@ -1,4 +1,5 @@
 import '@styles/globals.css';
+import Nav from '@components/navbar';
 
 export const metadata = {
     title: 'NFT Funded',
@@ -10,6 +11,7 @@ const RootLayout = ({ children }) => {
         <body>
             <main>
                 {children}
+                <Nav />
             </main>
         </body>
     </html>
