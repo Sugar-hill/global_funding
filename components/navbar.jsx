@@ -23,7 +23,7 @@ const Icon = ({styles, name, imgUrl, isActive, disabled, handleClick }) => (
 const Nav = () => {
 
     const [isActive, setIsActive] = useState('dashboard');
-    const [isLink, setIsLink] = useState('dashboard');
+    
     return (
       <div className="flex justify-between items-center flex-row sticky bottom-3 w-3/4 m-auto"> 
         {/* <Link href="/">
