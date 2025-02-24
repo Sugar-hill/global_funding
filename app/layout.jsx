@@ -9,7 +9,7 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en">
         <body>
-            <main>
+            <main className="bg-slate-500 min-h-screen">
                 {children}
                 <Nav />
             </main>
