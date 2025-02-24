@@ -26,10 +26,10 @@ const CreateCampaign = () => {
 
   return (
     <div className="bg-[#1c1c24] flex justify-center items-start
-    flex-col rounded-[10px] p-10 min-h-screen">
+    flex-col rounded-b-[10px] p-10 min-h-screen">
       {isLoading && 'Loader...'}
       <div className="flex justify-center items-center w-64 p-[15px] bg-[#3a3a43]
-      rounded-[10px]">
+      rounded-[10px] m-auto">
         <h1 className="font-epilogue font-bold text-[25px] text-white leading-[38px]">
           Start a Campaign
         </h1>
@@ -92,8 +92,7 @@ const CreateCampaign = () => {
             styles="bg-[#1dc071]"
           />
 
-        </div>
-   
+        </div>  
       </form>
     </div>
   )

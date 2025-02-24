@@ -14,7 +14,7 @@ const FormField = ({ labelName, placeholder, isTextArea, inputType, value, handl
                     onChange={handleChange}
                     rows={10}
                     placeholder={placeholder}
-                    className="py-[15px] px-[25px] outline-none border-[1px] border-[#3a3a43]
+                    className="py-[15px] px-[25px] outline-none border-[1px] border-t-0 border-l-0 border-[#3a3a43]
                     bg-transparent font-epilogue text-white text-[14px] placeholder:text-[#4b5264]
                     rounded-[10px] min-w-[300px]"
                 />
@@ -26,7 +26,7 @@ const FormField = ({ labelName, placeholder, isTextArea, inputType, value, handl
                     type={inputType}
                     placeholder={placeholder}
                     step="0.1"
-                    className="py-[15px] px-[25px] outline-none border-[1px] border-[#3a3a43]
+                    className="py-[15px] px-[25px] outline-none border-[1px] border-t-0 border-l-0 border-[#3a3a43]
                     bg-transparent font-epilogue text-white text-[14px] placeholder:text-[#4b5264]
                     rounded-[10px] min-w-[300px]"
                 />
