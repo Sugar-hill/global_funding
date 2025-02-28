@@ -6,9 +6,12 @@ import CustomButton from "@components/CustomButton";
 import FormField from "@components/FormField";
 import { checkIfImage } from "@utils";
 import Image from "@node_modules/next/image";
+import { useRouter } from 'next/navigation';
 
 
 const CreateCampaign = () => {
+
+  const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
   const [form, setForm] = useState({
@@ -20,7 +23,27 @@ const CreateCampaign = () => {
     deadline: '',
   });
 
-  const handleSubmit = () => {
+  const handleFormFieldChange = (fieldName, e) => {
+    setForm({ ...form, [fieldName]: e.target.value })
+  }
+
+  //Don't forget to add the TON connection logics here  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    checkIfImage(form.image, async (exists) => {
+      if(exists) {
+        setIsLoading(true);
+        // Add your TON transaction logic here // await createCampaign(name, organization, description, parseFloat(goal), imageUrl);
+        setIsLoading(false);
+        router.push('/');
+
+      } else {
+        alert('Please upload a valid image');
+        setForm({...form, image: ''});
+      }
+    })
+    console.log(form);
 
   } 
 
@@ -42,7 +65,7 @@ const CreateCampaign = () => {
         placeholder="John Doe"
         inputType="text"
         value={form.name}
-        handleChange={() => {}}
+        handleChange={(e) => handleFormFieldChange('name', e)}
         />
 
         <FormField
@@ -50,7 +73,7 @@ const CreateCampaign = () => {
         placeholder="Write a title"
         inputType="text"
         value={form.title}
-        handleChange={() => {}}
+        handleChange={(e) => handleFormFieldChange('title', e)}
         />
 
         <FormField
@@ -58,7 +81,7 @@ const CreateCampaign = () => {
         placeholder="Write your story"
         isTextArea
         value={form.description}
-        handleChange={() => {}}
+        handleChange={(e) => handleFormFieldChange('description', e)}
         />
 
         <div className="w-full flex justify-start items-center p-4 bg-[#8c6dfd] h-[100px]
@@ -70,11 +93,11 @@ const CreateCampaign = () => {
         </div>
 
         <FormField
-        labelName="Goal *"
+        labelName="Goal *" 
         placeholder="TgBTC 200"
         inputType="text"
         value={form.target}
-        handleChange={() => {}}
+        handleChange={(e) => handleFormFieldChange('target', e)}
         />
 
         <FormField
@@ -82,7 +105,15 @@ const CreateCampaign = () => {
         placeholder="End Date"
         inputType="date"
         value={form.deadline}
-        handleChange={() => {}}
+        handleChange={(e) => handleFormFieldChange('deadline', e)}
+        />
+
+        <FormField
+        labelName="Campaign Image *"
+        placeholder="Place image URL of your campaign"
+        inputType="url"
+        value={form.image}
+        handleChange={(e) => handleFormFieldChange('image', e)}
         />
 
         <div className="flex justify-center items-center mt-[40px]">
