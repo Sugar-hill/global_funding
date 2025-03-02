@@ -1,0 +1,305 @@
+// automatically generated from `/stdlib/std/stdlib.fc` `/stdlib/std/stdlib_ex.fc` `C:/Users/Omen/Desktop/Telegram/build/StakingContract/tact_StakingContract.code.fc` 
+PROGRAM{
+  DECLPROC __tact_sha256
+  DECLPROC __tact_context_get
+  DECLPROC __tact_context_get_sender
+  DECLPROC $Deploy$_load_without_opcode
+  DECLPROC $DeployOk$_store
+  DECLPROC $DeployOk$_store_cell
+  DECLPROC $Add$_load_without_opcode
+  DECLPROC $StakingContract$_store
+  DECLPROC $StakingContract$_load
+  DECLPROC $StateInit$_not_null
+  DECLPROC $StakingContract$init$_load
+  DECLPROC $StakingContract$_contract_init
+  DECLPROC $StakingContract$_contract_load
+  DECLPROC $StakingContract$_contract_store
+  DECLPROC $StakingContract$_fun_counter
+  DECLPROC $StakingContract$_fun_id
+  DECLPROC $SendParameters$_constructor_bounce_to_value_mode_body_code_data
+  DECLPROC $StakingContract$_fun_forward
+  DECLPROC $StakingContract$_fun_notify
+  DECLPROC $DeployOk$_constructor_queryId
+  104984 DECLMETHOD %counter
+  105872 DECLMETHOD %id
+  DECLPROC recv_internal
+  65535 DECLMETHOD __tact_selector_hack
+  DECLGLOBVAR __tact_context
+  DECLGLOBVAR __tact_context_sender
+  DECLGLOBVAR __tact_child_contract_codes
+  DECLGLOBVAR __tact_randomized
+  __tact_sha256 PROC:<{
+    ONE
+    WHILE:<{
+      OVER SREFS 0 NEQINT
+    }>DO<{
+      OVER LDREF s0 POP CTOS s0 s1 XCHG INC
+    }>
+    HASHEXT_SHA256
+  }>
+  __tact_context_get PROCINLINE:<{
+    __tact_context GETGLOB
+    4 UNTUPLE
+  }>
+  __tact_context_get_sender PROCINLINE:<{
+    __tact_context_sender GETGLOB
+  }>
+  $Deploy$_load_without_opcode PROCINLINE:<{
+    64 LDU
+    SWAP
+  }>
+  $DeployOk$_store PROCINLINE:<{
+    2952335191 PUSHINT
+    ROT
+    32 STU
+    64 STU
+  }>
+  $DeployOk$_store_cell PROCINLINE:<{
+    NEWC
+    SWAP
+    $DeployOk$_store INLINECALLDICT
+    ENDC
+  }>
+  $Add$_load_without_opcode PROCINLINE:<{
+    64 LDU
+    32 LDU
+    -ROT
+  }>
+  $StakingContract$_store PROCINLINE:<{
+    s0 s2 XCHG
+    32 STU
+    32 STU
+  }>
+  $StakingContract$_load PROCINLINE:<{
+    32 LDU
+    32 LDU
+    -ROT
+  }>
+  $StateInit$_not_null PROCINLINE:<{
+    DUP
+    ISNULL
+    128 THROWIF
+        2 UNTUPLE
+  }>
+  $StakingContract$init$_load PROCINLINE:<{
+    257 PUSHINT
+    LDIX
+    SWAP
+  }>
+  $StakingContract$_contract_init PROCINLINE:<{
+    0 PUSHINT
+  }>
+  $StakingContract$_contract_load PROCINLINE:<{
+    c4 PUSH
+    CTOS
+    1 LDI
+    SWAP
+    IF:<{
+      $StakingContract$_load INLINECALLDICT
+      1 2 BLKDROP2
+    }>ELSE<{
+      $StakingContract$init$_load INLINECALLDICT
+      SWAP
+      ENDS
+      $StakingContract$_contract_init INLINECALLDICT
+    }>
+  }>
+  $StakingContract$_contract_store PROCINLINE:<{
+    NEWC
+    TRUE
+    SWAP
+    1 STI
+    -ROT
+    $StakingContract$_store INLINECALLDICT
+    ENDC
+    c4 POP
+  }>
+  $StakingContract$_fun_counter PROCREF:<{
+    DUP
+  }>
+  $StakingContract$_fun_id PROCREF:<{
+    OVER
+  }>
+  $SendParameters$_constructor_bounce_to_value_mode_body_code_data PROCINLINE:<{
+    s3 s6 XCHG
+    3 3 BLKSWAP
+    s1 s2 XCHG
+  }>
+  $StakingContract$_fun_forward PROCREF:<{
+    PUSHNULL
+    PUSHNULL
+    s2 PUSH
+    ISNULL
+    NOT
+    IF:<{
+      2DROP
+      $StateInit$_not_null INLINECALLDICT
+      SWAP
+    }>ELSE<{
+      s2 POP
+    }>
+    s2 s4 XCHG
+    0 PUSHINT
+    s0 s3 XCHG
+    s0 s4 XCHG
+    66 PUSHINT
+    s2 s3 XCHG2
+    $SendParameters$_constructor_bounce_to_value_mode_body_code_data INLINECALLDICT
+        NEWC
+        b{01} STSLICECONST  // store tag = $0 and ihr_disabled = true
+        1 STI               // store `bounce`
+        b{000} STSLICECONST // store bounced = false and src = addr_none
+        STSLICE             // store `to`
+        SWAP
+        STGRAMS             // store `value`
+        105 PUSHINT         // 1 + 4 + 4 + 64 + 32
+        STZEROES            // store currency_collection, ihr_fee, fwd_fee, created_lt and created_at
+        // → Stack state
+        // s0: Builder
+        // s1: `data`
+        // s2: `code`
+        // s3: `body`
+        // s4: `mode`
+        // Group 2: Placing the Builder after code and data, then checking those for nullability
+        s2 XCHG0
+        DUP2
+        ISNULL
+        SWAP
+        ISNULL
+        MUL // note that -1 * -1 wraps back to -1
+        // → Stack state
+        // s0: -1 (true) if `data` and `code` are both null, 0 (false) otherwise
+        // s1: `code`
+        // s2: `data`
+        // s3: Builder
+        // s4: `body`
+        // s5: `mode`
+        // Group 3: Left branch of the IFELSE, executed if s0 is -1 (true)
+        <{
+            DROP2 // drop `data` and `code`, since either of those is null
+            b{0} STSLICECONST
+        }> PUSHCONT
+        // Group 3: Right branch of the IFELSE, executed if s0 is 0 (false)
+        <{
+            // _ split_depth:(Maybe (## 5))
+            //   special:(Maybe TickTock)
+            //   code:(Maybe ^Cell)
+            //   data:(Maybe ^Cell)
+            //   library:(Maybe ^Cell)
+            // = StateInit;
+            ROT                // place message Builder on top
+            b{10} STSLICECONST // store Maybe = true, Either = false
+            // Start composing inlined StateInit
+            b{00} STSLICECONST // store split_depth and special first
+            STDICT             // store code
+            STDICT             // store data
+            b{0} STSLICECONST  // store library
+        }> PUSHCONT
+        // Group 3: IFELSE that does the branching shown above
+        IFELSE
+        // → Stack state
+        // s0: Builder
+        // s1: null or StateInit
+        // s2: `body`
+        // s3: `mode`
+        // Group 4: Finalizing the message
+        STDICT // store `body` as ref with an extra Maybe bit, since `body` might be null
+        ENDC
+        // → Stack state
+        // s0: Cell
+        // s1: `mode`
+        // Group 5: Sending the message, with `mode` on top
+        SWAP
+        SENDRAWMSG // https://github.com/tact-lang/tact/issues/1558
+  }>
+  $StakingContract$_fun_notify PROCINLINE:<{
+    __tact_context_get_sender INLINECALLDICT
+    SWAP
+    FALSE
+    PUSHNULL
+    $StakingContract$_fun_forward INLINECALLDICT
+  }>
+  $DeployOk$_constructor_queryId PROCINLINE:<{
+  }>
+  %counter PROC:<{
+    $StakingContract$_contract_load INLINECALLDICT
+    $StakingContract$_fun_counter INLINECALLDICT
+    2 1 BLKDROP2
+  }>
+  %id PROC:<{
+    $StakingContract$_contract_load INLINECALLDICT
+    $StakingContract$_fun_id INLINECALLDICT
+    2 1 BLKDROP2
+  }>
+  recv_internal PROC:<{
+    SWAP
+    CTOS
+    2 PUSHINT
+    SDSKIPFIRST
+    1 LDI
+    1 LDI
+    LDMSGADDR
+    OVER
+    s3 s4 XCHG
+    s6 s6 XCHG2
+    4 TUPLE
+    __tact_context SETGLOB
+    s0 s2 XCHG
+    __tact_context_sender SETGLOB
+    $StakingContract$_contract_load INLINECALLDICT
+    s0 s3 XCHG
+    IFJMP:<{
+      3 BLKDROP
+    }>
+    SWAP
+    32 LDUQ 130 THROWIFNOT
+    OVER
+    2335447074 PUSHINT
+    EQUAL
+    IFJMP:<{
+      NIP
+      $Add$_load_without_opcode INLINECALLDICT
+      2 1 BLKDROP2
+      s1 s2 XCHG
+      ADD
+          B{b5ee9c7241010101000e00001800000000436173686261636b52cdf898} B>boc PUSHREF
+      $StakingContract$_fun_notify INLINECALLDICT
+      $StakingContract$_contract_store INLINECALLDICT
+    }>
+    SWAP
+    2490013878 PUSHINT
+    EQUAL
+    IFJMP:<{
+      $Deploy$_load_without_opcode INLINECALLDICT
+      NIP
+      $DeployOk$_constructor_queryId INLINECALLDICT
+      $DeployOk$_store_cell INLINECALLDICT
+      s1 s2 XCHG
+      $StakingContract$_fun_notify INLINECALLDICT
+      $StakingContract$_contract_store INLINECALLDICT
+    }>
+    3 BLKDROP
+    130 THROW
+  }>
+  __tact_selector_hack PROC:<{
+    @atend @ 1 {
+        execute current@ context@ current!
+        {
+            }END> b>
+            
+            <{
+                SETCP0 DUP
+                IFNOTJMP:<{
+                    DROP over <s ref@ 0 swap @procdictkeylen idict@ { "internal shortcut error" abort } ifnot @addop
+                }>
+    swap <s ref@
+                0 swap @procdictkeylen idict- drop
+                -1 swap @procdictkeylen idict- drop
+                65535 swap @procdictkeylen idict- drop
+                @procdictkeylen DICTPUSHCONST DICTIGETJMPZ 11 THROWARG
+            }> b>
+        } : }END>c
+        current@ context! current!
+    } does @atend !
+  }>
+}END>c
