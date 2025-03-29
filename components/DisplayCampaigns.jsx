@@ -1,6 +1,4 @@
 
-import Image from "@node_modules/next/image"
-import { loader } from "@public/assets/icons"
 import { useRouter } from 'next/navigation';
 import FundCard from "./FundCard";
 
@@ -10,9 +8,6 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
 
     const handleNavigate = (campaign) => {
         router.push(`/campaign-details/${campaign.id}`);
-  
-        // Or if using the title as identifier:
-        // router.push(`/campaign-details/${encodeURIComponent(campaign.title)}`);
     }
   return (
     <div>
@@ -21,10 +16,10 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
             {title} ({campaigns.length})
         </h1>
         <div className="flex flex-col mt-[20px] gap-[26px] px-6">
-            {isLoading && (
+            {/* {isLoading && (
                 <Image src={loader} alt='loader' width={400} height={400} 
                 className={'object-contain'} />
-            )}
+            )} */}
 
             {!isLoading && campaigns.length === 0 && (
             <p className="font-epilogue font-semibold text-[14px] leading-[30px] text-[#818183]">

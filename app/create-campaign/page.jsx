@@ -7,6 +7,7 @@ import FormField from "@components/FormField";
 import { checkIfImage } from "@utils";
 import Image from "@node_modules/next/image";
 import { useRouter } from 'next/navigation';
+import Load from "@components/loader";
 
 
 const CreateCampaign = () => {
@@ -50,7 +51,8 @@ const CreateCampaign = () => {
   return (
     <div className="bg-[#1c1c24] flex justify-center items-start
     flex-col rounded-b-[10px] p-10 min-h-screen">
-      {isLoading && 'Loader...'}
+      {isLoading && <Load />}
+
       <div className="flex justify-center items-center w-64 p-[15px] bg-[#3a3a43]
       rounded-[10px] m-auto">
         <h1 className="font-epilogue font-bold text-[25px] text-white leading-[38px]">
