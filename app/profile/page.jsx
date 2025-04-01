@@ -1,7 +1,7 @@
 "use client"
 
 import Topbar from "@components/topbar"
-import DisplayCampaigns from "@components/DisplayCampaigns";
+import Displayinvestments from "@components/DisplayEvents";
 import { useEffect, useState } from "react";
 
 const Profile = () => {
@@ -12,40 +12,40 @@ const Profile = () => {
   const img4 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy50_LAqiNiHc49CFMpAz_NlvHKogHvF-ETw&s"
 
   const [isLoading, setIsLoading] = useState(false);
-  const [campaigns, setCampaigns] = useState([
+  const [investments, setinvestments] = useState([
    
   ]);  //To be fetched when you set up the ton contract address
   // But for now this is a static data to make sure it looks great after
   
   
-  const campaign = [
-    { id: 0, owner: "0Xabdsefghfgjnnnhnnnnnnfghfghgfhfghfg", title: "Campaign 1", description: "This is Campaign 1 and I am just repeating words here.", target: "238", deadline: 2, image: img1, amountCollected: "122" },
-    { id: 1, owner: "0Xabdseghfghjgjkjkjhjhjjjjjhkhdgrtgdr", title: "Campaign 2", description: "This is Campaign 2 and I am just repeating words here.", target: "238", deadline: 89, image: img2, amountCollected: "122" },
-    { id: 2, owner: "0Xabdseghfghjgjkjkjhjhjjjjjhkhdgrtgdr", title: "Campaign 3", description: "This is Campaign 3 and I am just repeating words here.", target: "238", deadline: 67, image: img3, amountCollected: "122" },
-    { id: 3, owner: "0Xabdseghfghjgjkjkjhjhjjjjjhkhdgrtgdr", title: "Campaign 4", description: "This is Campaign 4 and I am just repeating words here.", target: "238", deadline: 32, image: img4, amountCollected: "122" }
+  const investment = [
+    { id: 0, owner: "0Xabdsefghfgjnnnhnnnnnnfghfghgfhfghfg", title: "investment 1", description: "This is investment 1 and I am just repeating words here.", target: "238", deadline: 2, image: img1, amountCollected: "122" },
+    { id: 1, owner: "0Xabdseghfghjgjkjkjhjhjjjjjhkhdgrtgdr", title: "investment 2", description: "This is investment 2 and I am just repeating words here.", target: "238", deadline: 89, image: img2, amountCollected: "122" },
+    { id: 2, owner: "0Xabdseghfghjgjkjkjhjhjjjjjhkhdgrtgdr", title: "investment 3", description: "This is investment 3 and I am just repeating words here.", target: "238", deadline: 67, image: img3, amountCollected: "122" },
+    { id: 3, owner: "0Xabdseghfghjgjkjkjhjhjjjjjhkhdgrtgdr", title: "investment 4", description: "This is investment 4 and I am just repeating words here.", target: "238", deadline: 32, image: img4, amountCollected: "122" }
   ];
 
 
-  const getUserCampaigns = () => {
-    const allCampaigns = campaign;
+  const getUserinvestments = () => {
+    const allinvestments = investment;
 
-    const filteredCampaigns = allCampaigns.filter((campaign) => 
-      campaign.owner === "0Xabdsefghfgjnnnhnnnnnnfghfghgfhfghfg" // later change that to address, for dynamic check
+    const filteredinvestments = allinvestments.filter((investment) => 
+      investment.owner === "0Xabdsefghfgjnnnhnnnnnnfghfghgfhfghfg" // later change that to address, for dynamic check
     );
-    return filteredCampaigns;
+    return filteredinvestments;
   } // and putthem in another file
 
   useEffect(() => {
-    setCampaigns(getUserCampaigns);
+    setinvestments(getUserinvestments);
   }, [])
 
   return (
-    <div className="bg-slate-500 text-center min-h-screen">
+    <div className="bg-[#000000] text-center min-h-screen">
       <Topbar />
-      <DisplayCampaigns 
-        title="All campaigns"
+      <Displayinvestments 
+        title="All investments"
         isLoading= {isLoading}
-        campaigns={campaigns}
+        investments={investments}
       />
     
     </div>

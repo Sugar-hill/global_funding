@@ -8,12 +8,12 @@ import { navlinks } from '@constants';
 
 
 const Icon = ({styles, name, imgUrl, isActive, disabled, handleClick }) => (
-    <div className= {`w-[30px] h-[30px] rounded-[10px] ${isActive && isActive === name && 'bg-[#2c2f32}'} flex 
+    <div className= {`w-[30px] h-[30px] rounded-[10px] ${isActive && isActive === name && 'bg-[#322543dc]'} flex 
     justify-center items-center ${!disabled && 'cursor-pointer'} ${styles} `} onClick={handleClick}>
         {!isActive ? (
-            <Image src={imgUrl} alt="fund_logo" width={35} height={35} className='object-contain'/>
+            <Image src={imgUrl} alt="logo" width={35} height={35} className='object-contain'/>
         ) : ( 
-            <Image src={imgUrl} alt='fund_logo' width={35} height={35} className={`object-contain 
+            <Image src={imgUrl} alt='logo' width={35} height={35} className={`object-contain 
                 ${isActive !== name && 'grayscale'}`} />
         )}
 
@@ -22,20 +22,20 @@ const Icon = ({styles, name, imgUrl, isActive, disabled, handleClick }) => (
 
 const Nav = () => {
 
-    const [isActive, setIsActive] = useState('dashboard');
+    const [isActive, setIsActive] = useState('home');
     
     return (
-      <div className="flex justify-between items-center flex-row sticky bottom-3 w-3/4 m-auto"> 
+      <div className="flex justify-between items-center flex-row sticky bottom-3 w-64 m-auto "> 
         {/* <Link href="/">
             <Icon styles="w-[40px] h-[40px] bg-[#2c2f32]" imgUrl={logo} />
         
         </Link> */}
 
         <div className='flex-1 flex flex-row justify-between
-        items-center bg-[#1c1c24] rounded-[15px] w-auto
+        items-center bg-[#322543bd] rounded-[15px] w-auto
         py-3 px-6'>
             <div className='flex flex-row justify-center items-center
-            gap-3'>
+            gap-6 p-1'>
                 {navlinks.map((link) => (
                         <Link 
                             key={link.name} 
